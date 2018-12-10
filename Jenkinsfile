@@ -7,7 +7,13 @@ node {
 
 	stage('Build image') {
 		app = docker.build("nimo1975/example-app")
-        }  
+        }
+
+	stage('Test') {
+		app.inside {
+			sh 'npm test'
+                }
+        } 
 
 	stage('Push image') {
 		docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
