@@ -6,7 +6,7 @@ node {
 	}
 
 	stage('Build image') {
-		app = docker.build("my_image")
+		app = docker.build("nimroda/example-app")
         }  
 
 	stage('Push image') {
